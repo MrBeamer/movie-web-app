@@ -24,3 +24,8 @@ body {
 
   --secondary-1: #424566;
 }
+
+.container {
+  margin: 0 30px;
+  /* height: 100vh; */
+}

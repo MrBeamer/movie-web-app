@@ -1,0 +1,21 @@
+.movie-card {
+  display: grid;
+  width: 200px;
+
+  background-color: var(--secondary-1);
+  color: var(--white);
+}
+
+.movie-card img {
+  width: 200px;
+
+  border-left: 1px solid var(--primary-1);
+  border-right: 1px solid var(--primary-1);
+  border-top: 1px solid var(--primary-1);
+}
+
+.movie-infos {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 15px;
+}
