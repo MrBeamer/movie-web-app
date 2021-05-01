@@ -1,0 +1,17 @@
+input {
+  border: 0.125rem solid var(--primary-2);
+  background-color: var(--secondary-1);
+  padding: 0.625rem 0.5rem;
+  transition: all 0.8s;
+  text-align: left;
+  color: var(--primary-3);
+}
+
+input:focus {
+  outline: var(--primary-2);
+  border: 0.125rem solid var(--primary-2);
+}
+
+::placeholder {
+  color: var(--primary-3);
+}

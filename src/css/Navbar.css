@@ -1,5 +1,16 @@
 .navbar {
   display: flex;
-  height: 12vh;
-  background-color: red;
+  height: 10vh;
+  background-color: var(--secondary-1);
+  justify-content: space-between;
+}
+
+.nav-form {
+  align-self: center;
+  margin-right: 2.875rem;
+  width: 30%;
+}
+
+.nav-search {
+  width: 100%;
 }
