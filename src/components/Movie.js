@@ -1,15 +1,17 @@
 import React from "react";
 
-export default function Movies() {
+export default function Movies(props) {
+  const { movie } = props;
+  console.log(movie.id);
   return (
     <div className="movie-card">
       <img
-        src="https://m.media-amazon.com/images/M/MV5BNGM3NDBhMWMtODc5Mi00ZWY2LTgyNTgtNDAzNTIzNzhmMGE1XkEyXkFqcGdeQXVyNjEwNTM2Mzc@._V1_FMjpg_UX810_.jpg"
+        src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
         alt="placeholder"
       ></img>
       <div className="movie-infos">
-        <p>TITLE</p>
-        <p>SCORE</p>
+        <p>{movie.title}</p>
+        <p>{movie.vote_average}</p>
       </div>
     </div>
   );

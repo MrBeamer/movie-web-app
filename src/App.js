@@ -6,12 +6,16 @@ import Movies from "./components/Movies.js";
 
 export default function App() {
   const [searchQuery, setSearchQuery] = useState("");
-
+  const [movies, setMovies] = useState([]);
   return (
     <div>
-      <Navbar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      <Navbar
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        setMovies={setMovies}
+      />
       <div className="container">
-        <Movies />
+        <Movies movies={movies} />
       </div>
     </div>
   );
