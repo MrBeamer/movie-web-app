@@ -3,4 +3,5 @@
   grid-template-columns: repeat(5, auto) 1fr;
   grid-gap: 2.188rem;
   margin: 2.5rem 0;
+  transition: all 10s ease-in-out;
 }

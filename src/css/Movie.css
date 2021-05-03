@@ -1,14 +1,13 @@
 .movie-card {
   display: grid;
-  width: 200px;
-
   background-color: var(--secondary-1);
   color: var(--white);
+  max-width: 200px;
+  border-right: 2px solid var(--secondary-1);
 }
 
 .movie-card img {
   width: 200px;
-
   border-left: 1px solid var(--primary-1);
   border-right: 1px solid var(--primary-1);
   border-top: 1px solid var(--primary-1);
@@ -17,5 +16,18 @@
 .movie-infos {
   display: flex;
   justify-content: space-between;
-  padding: 0px 15px;
+  padding: 0.438rem 0.625rem;
+}
+
+/* Review score  */
+.green {
+  color: #22d07a;
+}
+
+.yellow {
+  color: #d2d530;
+}
+
+.red {
+  color: #db2360;
 }

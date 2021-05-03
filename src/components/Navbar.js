@@ -5,11 +5,11 @@ import Input from "./Input.js";
 const apiKey = process.env.REACT_APP_MOVIE_KEY;
 
 export default function Navbar(props) {
-  const { setSearchQuery, searchQuery, setMovies } = props;
+  const { setSearchQuery, searchQuery, setMovies, setLoading } = props;
 
   async function handleSearchSubmit(event) {
     event.preventDefault();
-
+    setLoading(true);
     try {
       const response = await fetch(
         `  https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchQuery}`
@@ -18,8 +18,10 @@ export default function Navbar(props) {
       setMovies(data.results);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
+      setSearchQuery("");
     }
-    setSearchQuery("");
   }
 
   return (
