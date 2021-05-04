@@ -1,7 +1,9 @@
 .movies-layout {
   display: grid;
-  grid-template-columns: repeat(5, auto) 1fr;
-  grid-gap: 2.188rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 200px));
+  justify-content: space-evenly;
+  grid-column-gap: 1.188rem;
+  grid-row-gap: 2.188rem;
   margin: 2.5rem 0;
-  transition: all 10s ease-in-out;
+  transition: all 0.8s ease-in-out;
 }

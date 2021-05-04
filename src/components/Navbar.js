@@ -12,8 +12,11 @@ export default function Navbar(props) {
     setLoading(true);
     try {
       const response = await fetch(
-        `  https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchQuery}`
+        `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchQuery}`
       );
+
+      if (!response.ok) throw Error(`Movie not found ${response.status}`);
+
       const data = await response.json();
       setMovies(data.results);
     } catch (error) {

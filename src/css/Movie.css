@@ -1,9 +1,10 @@
 .movie-card {
   display: grid;
-  background-color: var(--secondary-1);
-  color: var(--white);
   max-width: 200px;
+  color: var(--white);
+  background-color: var(--secondary-1);
   border-right: 2px solid var(--secondary-1);
+  border-radius: 3px;
 }
 
 .movie-card img {
@@ -12,13 +13,43 @@
   border-left: 1px solid var(--primary-1);
   border-right: 1px solid var(--primary-1);
   border-top: 1px solid var(--primary-1);
+  border-radius: 3px 3px 0 0;
 }
 
 .movie-infos {
   display: flex;
   justify-content: space-between;
-  padding: 0.438rem 0.625rem;
+  padding: 0.138rem 0.625rem;
+  overflow: hidden;
 }
+/*  */
+.score {
+  position: relative;
+}
+
+.score p {
+  position: absolute;
+  top: -2%;
+  right: 3%;
+  padding: 0.75rem 0.375rem;
+  background-color: rgba(46, 48, 71, 0.7);
+  border-radius: 3px;
+}
+/*  */
+.movie-infos p {
+  align-self: center;
+  letter-spacing: 0.4px;
+  line-height: 1.25rem;
+  padding-right: 0.688rem;
+}
+
+/* .movie-infos p:nth-child(2) {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  padding: 0.75rem 0.375rem;
+  background-color: var(--primary-2);
+} */
 
 /* Review score  */
 .green {

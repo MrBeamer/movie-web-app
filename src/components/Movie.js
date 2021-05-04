@@ -11,23 +11,36 @@ export default function Movies(props) {
     red: movieScorePercentage < 40,
   });
 
-  function handleImageError(event) {
-    event.target.src =
-      "https://res.cloudinary.com/dxdboxbyb/image/upload/v1620052094/ayi6tvyiedrlmjiim6yn.png";
-  }
+  // function handleImageError(event) {
+  //   event.target.src =
+  //     "https://res.cloudinary.com/dxdboxbyb/image/upload/v1620052094/ayi6tvyiedrlmjiim6yn.png";
+  // }
 
   return (
     <div className="movie-card">
-      <img
-        src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-        alt={movie.title}
-        onError={handleImageError}
-      ></img>
+      <div className="score">
+        <p className={classNames}>
+          {movie?.vote_average === 0 ? "NR" : `${movie?.vote_average}`}
+        </p>
+        {/* <img
+          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+          alt={movie.title}
+          onError={handleImageError}
+        ></img> */}
+        <img
+          src={
+            movie.poster_path === null
+              ? "https://res.cloudinary.com/dxdboxbyb/image/upload/v1620052094/ayi6tvyiedrlmjiim6yn.png"
+              : `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+          }
+          alt={movie.title}
+        ></img>
+      </div>
       <div className="movie-infos">
         <p>{movie.title}</p>
-        <p className={classNames}>
-          {movieScorePercentage === 0 ? "NR" : `${movieScorePercentage}%`}
-        </p>
+        {/* <p className={classNames}>
+          {movie?.vote_average === 0 ? "NR" : `${movie?.vote_average}`}
+        </p> */}
       </div>
     </div>
   );
