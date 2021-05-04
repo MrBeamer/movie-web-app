@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Movie from "./Movie.js";
 import Loader from "./Loader";
 
 export default function Movies(props) {
-  const { movies, loading } = props;
+  const { movies, loading, setMovies } = props;
   console.log(movies);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await fetch(
+          " https://api.themoviedb.org/3/movie/popular?api_key=315ea8e9e1e6bcab496e98c022ef2d79&page=1"
+        );
+        const data = await response.json();
+        setMovies(data.results);
+        console.log(data.results);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, [setMovies]);
 
   return (
     <>

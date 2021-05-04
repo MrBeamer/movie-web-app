@@ -17,7 +17,7 @@ export default function App() {
         setMovies={setMovies}
       />
       <div className="container">
-        <Movies movies={movies} loading={loading} />
+        <Movies movies={movies} loading={loading} setMovies={setMovies} />
       </div>
     </div>
   );

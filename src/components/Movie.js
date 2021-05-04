@@ -22,12 +22,9 @@ export default function Movies(props) {
         <p className={classNames}>
           {movie?.vote_average === 0 ? "NR" : `${movie?.vote_average}`}
         </p>
-        {/* <img
-          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-          alt={movie.title}
-          onError={handleImageError}
-        ></img> */}
+
         <img
+          className={classNames}
           src={
             movie.poster_path === null
               ? "https://res.cloudinary.com/dxdboxbyb/image/upload/v1620052094/ayi6tvyiedrlmjiim6yn.png"

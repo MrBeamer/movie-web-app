@@ -54,12 +54,15 @@
 /* Review score  */
 .green {
   color: #22d07a;
+  border-color: #22d07a !important;
 }
 
 .yellow {
   color: #d2d530;
+  border-color: #d2d530 !important;
 }
 
 .red {
   color: #db2360;
+  border-color: #db2360 !important;
 }
