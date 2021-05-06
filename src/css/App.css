@@ -3,4 +3,5 @@
 @import "Movies";
 @import "Movie";
 @import "Loader";
+@import "MovieDetails";
 @import "mediaQueries";

@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "../logo.svg";
 import Input from "./Input.js";
+import { Link } from "react-router-dom";
 
 const apiKey = process.env.REACT_APP_MOVIE_KEY;
 
@@ -29,7 +30,9 @@ export default function Navbar(props) {
 
   return (
     <nav className="navbar">
-      <img src={logo} alt="logo"></img>
+      <Link to="/">
+        <img src={logo} alt="logo" />
+      </Link>
       <form className="nav-form" onSubmit={handleSearchSubmit}>
         <Input
           type="text"

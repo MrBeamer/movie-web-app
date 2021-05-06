@@ -1,0 +1,40 @@
+.header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  margin: 2.5rem 0;
+  background-color: var(--secondary-1);
+  color: var(--white);
+  padding: 1.25rem;
+  grid-column-gap: 2.313rem;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.poster img {
+  border-radius: 3px;
+}
+
+.title,
+.genres {
+  display: flex;
+}
+
+.genres p {
+  margin-right: 10px;
+}
+
+.title h1:last-child {
+  margin-left: 0.625rem;
+}
+
+.details {
+  display: grid;
+  grid-template-rows: auto auto;
+}
+
+.poster {
+  width: 100%;
+}

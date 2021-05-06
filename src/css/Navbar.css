@@ -5,6 +5,10 @@
   justify-content: space-between;
 }
 
+.navbar a {
+  width: 127px;
+}
+
 .nav-form {
   align-self: center;
   margin-right: 2.875rem;
@@ -14,8 +18,3 @@
 .nav-search {
   width: 100%;
 }
-
-/* .navbar img {
-  width: 10%;
-  margin-left: 20px;
-} */

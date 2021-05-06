@@ -1,5 +1,6 @@
 import React from "react";
 import clsx from "clsx";
+import { Link } from "react-router-dom";
 
 export default function Movies(props) {
   const { movie } = props;
@@ -22,16 +23,17 @@ export default function Movies(props) {
         <p className={classNames}>
           {movie?.vote_average === 0 ? "NR" : `${movie?.vote_average}`}
         </p>
-
-        <img
-          className={classNames}
-          src={
-            movie.poster_path === null
-              ? "https://res.cloudinary.com/dxdboxbyb/image/upload/v1620052094/ayi6tvyiedrlmjiim6yn.png"
-              : `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-          }
-          alt={movie.title}
-        ></img>
+        <Link to={`/movie/${movie.id}`}>
+          <img
+            className={classNames}
+            src={
+              movie.poster_path === null
+                ? "https://res.cloudinary.com/dxdboxbyb/image/upload/v1620052094/ayi6tvyiedrlmjiim6yn.png"
+                : `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+            }
+            alt={movie.title}
+          />
+        </Link>
       </div>
       <div className="movie-infos">
         <p>{movie.title}</p>
