@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import clsx from "clsx";
 import MovieCredits from "./MovieCredits.js";
+import TrailerModal from "./TrailerModal.js";
 
 const apiKey = process.env.REACT_APP_MOVIE_KEY;
 
@@ -101,6 +102,7 @@ export default function MovieDetails() {
           </div>
         </div>
       </div>
+      <TrailerModal id={id} />
       <MovieCredits id={id} />
     </>
   );

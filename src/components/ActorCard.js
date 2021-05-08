@@ -2,8 +2,6 @@ import React from "react";
 
 export default function ActorCard(props) {
   const { actor } = props;
-  console.log(actor);
-
   return (
     <div className="actorCard">
       <img
