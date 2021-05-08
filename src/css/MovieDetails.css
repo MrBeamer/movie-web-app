@@ -7,6 +7,7 @@
   color: var(--white);
   padding: 1.25rem;
   grid-column-gap: 2.313rem;
+  border-radius: 3px;
 }
 
 .header h1 {
@@ -17,9 +18,25 @@
   border-radius: 3px;
 }
 
+.genres span {
+  font-size: 38px;
+  margin: 0 10px;
+}
+
+.plot p {
+  letter-spacing: 0.8px;
+  font-weight: 300;
+  line-height: 25px;
+}
+
 .title,
-.genres {
+.genres,
+.bookmark {
   display: flex;
+}
+
+.bookmark {
+  align-items: center;
 }
 
 .genres p {

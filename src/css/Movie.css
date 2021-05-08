@@ -5,6 +5,7 @@
   background-color: var(--secondary-1);
   border-right: 2px solid var(--secondary-1);
   border-radius: 3px;
+  box-shadow: 0 0 15px rgb(0 0 0 / 8%);
 }
 
 .movie-card img {
