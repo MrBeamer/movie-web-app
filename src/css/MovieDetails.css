@@ -39,6 +39,24 @@
   align-items: center;
 }
 
+.bookmark p,
+i {
+  margin-right: 10px;
+}
+
+.bookmark button {
+  background: transparent;
+  color: var(--white);
+  border: none;
+  transition: all 0.5s;
+}
+
+.bookmark button:hover {
+  color: var(--primary-1);
+  border: none;
+  cursor: pointer;
+}
+
 .genres p {
   margin-right: 10px;
 }
@@ -54,4 +72,21 @@
 
 .poster {
   width: 100%;
+}
+
+.similar-movie-layout {
+  display: grid;
+  grid-template-columns: repeat(99, 250px);
+  grid-column-gap: 25px;
+  grid-auto-flow: column;
+  overflow-x: scroll;
+  padding-bottom: 40px;
+}
+
+.close-button {
+  display: flex;
+  justify-content: flex-end;
+  color: var(--white);
+  font-size: 24px;
+  padding-bottom: 5px;
 }
