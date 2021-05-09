@@ -1,12 +1,9 @@
 .navbar {
   display: flex;
   height: 10vh;
-  background-color: var(--secondary-1);
+  background-color: var(--color-secondary);
   justify-content: space-between;
-}
-
-.navbar a {
-  width: 127px;
+  box-shadow: 0 0 15px rgb(0 0 0 / 8%);
 }
 
 .nav-form {
@@ -17,4 +14,23 @@
 
 .nav-search {
   width: 100%;
+}
+
+.nav-logo {
+  display: flex;
+  justify-content: center;
+  margin-left: 1.875rem;
+}
+
+.nav-logo p {
+  margin-left: 10px;
+  letter-spacing: 1.8px;
+  font-weight: 300;
+}
+
+.navbar a {
+  align-self: center;
+  text-decoration: none;
+  color: black;
+  list-style: none;
 }

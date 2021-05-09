@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--primary-2);
+  background-color: var(--color-secondary);
   box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -16,13 +16,17 @@ body {
   --white: #fff;
   --black: #000;
 
-  --primary-1: #3bba9c;
+  /* Is the old background color */
   --primary-2: #2e3047;
-  --primary-3: #707793;
-  --primary-4: #43455c;
-  --primary-5: #3c3f58;
 
+  /* Is the old secondary color */
   --secondary-1: #424566;
+  /* Is the old tertiary color */
+  --primary-3: #707793;
+
+  --color-primary: #d81f26;
+  --color-secondary: #fff;
+  --color-tertiary: #707793;
 }
 
 .container {
@@ -36,4 +40,8 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+
+.headline {
+  color: var(--black);
 }

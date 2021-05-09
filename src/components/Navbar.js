@@ -30,8 +30,9 @@ export default function Navbar(props) {
 
   return (
     <nav className="navbar">
-      <Link to="/">
+      <Link className="nav-logo" to="/">
         <img src={logo} alt="logo" />
+        <p>Moviesquare</p>
       </Link>
       <form className="nav-form" onSubmit={handleSearchSubmit}>
         <Input

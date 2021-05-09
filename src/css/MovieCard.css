@@ -7,7 +7,7 @@
 
 .similar-movie-card p {
   display: inline-block;
-  color: var(--white);
+  color: var(--black);
   font-weight: 300;
   letter-spacing: 0.4px;
 }

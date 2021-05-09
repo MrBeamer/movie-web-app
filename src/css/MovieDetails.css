@@ -3,12 +3,15 @@
   grid-template-columns: auto 1fr;
   grid-template-rows: auto auto;
   margin: 2.5rem 0;
-  background-color: var(--secondary-1);
+  background-color: var(--color-primary);
+  background-color: rgba(216, 31, 38, 0.9);
   color: var(--white);
   padding: 1.25rem;
   grid-column-gap: 2.313rem;
   border-radius: 3px;
 }
+
+/* red overlay over picture maybe looks good  */
 
 .header h1 {
   margin: 0;

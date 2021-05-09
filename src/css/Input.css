@@ -1,17 +1,18 @@
 input {
-  border: 0.125rem solid var(--primary-2);
-  background-color: var(--secondary-1);
+  border: 0.125rem solid #f5f5f7;
+  background-color: var(--color-secondary);
   padding: 0.625rem 0.5rem;
   transition: all 0.8s;
   text-align: left;
-  color: var(--primary-3);
+  color: var(--color-tertiary);
 }
 
 input:focus {
-  outline: var(--primary-2);
-  border: 0.125rem solid var(--primary-2);
+  outline: var(--color-primary);
+  border: 0.125rem solid var(--color-primary);
 }
 
 ::placeholder {
-  color: var(--primary-3);
+  color: var(--color-tertiary);
+  /* color: #cbcbd5; */
 }
