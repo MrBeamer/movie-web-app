@@ -12,6 +12,9 @@ export default function Movies(props) {
     red: movieScorePercentage < 40,
   });
 
+  const movieTitle =
+    movie.title.length > 30 ? movie.title.slice(0, 30) + "..." : movie.title;
+
   // function handleImageError(event) {
   //   event.target.src =
   //     "https://res.cloudinary.com/dxdboxbyb/image/upload/v1620052094/ayi6tvyiedrlmjiim6yn.png";
@@ -36,10 +39,7 @@ export default function Movies(props) {
         </Link>
       </div>
       <div className="movie-infos">
-        <p>{movie.title}</p>
-        {/* <p className={classNames}>
-          {movie?.vote_average === 0 ? "NR" : `${movie?.vote_average}`}
-        </p> */}
+        <p>{movieTitle}</p>
       </div>
     </div>
   );

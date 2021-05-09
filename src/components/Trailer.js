@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
 const apiKey = process.env.REACT_APP_MOVIE_KEY;
 
-export default function TrailerModal({ id }) {
+export default function Trailer({ id }) {
   const [trailer, setTrailer] = useState([]);
 
   useEffect(() => {
@@ -20,14 +19,15 @@ export default function TrailerModal({ id }) {
       console.log(error);
     }
   }, [id]);
-  console.log(trailer);
+
   return (
     <iframe
       title={id}
-      width="560"
-      height="315"
+      width="1194"
+      height="671"
       src={`https://www.youtube.com/embed/${trailer.key}`}
       frameBorder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowFullScreen
     ></iframe>
   );

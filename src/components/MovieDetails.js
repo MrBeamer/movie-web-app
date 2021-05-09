@@ -2,13 +2,25 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import clsx from "clsx";
 import MovieCredits from "./MovieCredits.js";
-import TrailerModal from "./TrailerModal.js";
+import Trailer from "./Trailer.js";
+import TransitionsModal from "./TransitionsModal.js";
+import MovieCard from "./MovieCard.js";
 
 const apiKey = process.env.REACT_APP_MOVIE_KEY;
 
 export default function MovieDetails() {
   const [movie, setMovie] = useState([]);
   // const [similarMovies, setSimilarMovies] = useState([]);
+
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const params = useParams();
   const id = Number(params.id);
@@ -24,7 +36,7 @@ export default function MovieDetails() {
     (async () => {
       try {
         const response = await fetch(
-          `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}`
+          `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&append_to_response=similar`
         );
 
         if (!response.ok) throw new Error("Problem getting movie details.");
@@ -37,29 +49,13 @@ export default function MovieDetails() {
     })();
   }, [id]);
 
-  //   useEffect(() => {
-  //     (async () => {
-  //       try {
-  //         const response = await fetch(
-  //           `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${apiKey}`
-  //         );
-
-  //         if (!response.ok) throw new Error("Problem getting movie details.");
-  //         const data = await response.json();
-  //         console.log(data);
-  //         setSimilarMovies(data);
-  //       } catch (error) {
-  //         console.log(error);
-  //       }
-  //     })();
-  //   }, [id]);
-
   //   const backgroundImage = {
   //     backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.backdrop_path})`,
   //     backgroundPosition: "center",
   //     backgroundSize: "cover",
   //     backgroundRepeat: "no-repeat",
   //   };
+
   return (
     <>
       <div className="header">
@@ -94,6 +90,9 @@ export default function MovieDetails() {
             </p>
             <i className="fas fa-bookmark"></i>
             <i className="fas fa-star"></i>
+            <button onClick={handleOpen}>
+              <i className="fas fa-play"></i>Watch Trailer
+            </button>
           </div>
           <div className="plot">
             <p>{movie.tagline}</p>
@@ -102,8 +101,19 @@ export default function MovieDetails() {
           </div>
         </div>
       </div>
-      <TrailerModal id={id} />
       <MovieCredits id={id} />
+      <h1 className="headline">Movies you could like</h1>
+      <div className="similar-movie-layout">
+        {movie.similar?.results?.map((similarMovie) => (
+          <MovieCard key={similarMovie.id} similarMovie={similarMovie} />
+        ))}
+      </div>
+      <TransitionsModal open={open} handleClose={handleClose}>
+        <div className="close-button" onClick={handleClose}>
+          <i class="fas fa-times"></i>
+        </div>
+        <Trailer id={id} />
+      </TransitionsModal>
     </>
   );
 }

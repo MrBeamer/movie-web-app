@@ -4,6 +4,7 @@
 @import "Movie";
 @import "Loader";
 @import "MovieDetails";
-@import "mediaQueries";
 @import "ActorCard";
 @import "MovieCredits";
+@import "MovieCard";
+@import "mediaQueries";
