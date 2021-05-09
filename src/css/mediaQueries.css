@@ -24,15 +24,9 @@
 
 /* Small phones from 0 - 480 px */
 @media only screen and (max-width: 480px) {
-  /* .movies-layout {
-    grid-template-columns: auto;
-  } */
-  /* .movie-card img {
-    height: 364px;
-  } */
-  /* .movie-card {
-    max-width: unset;
-  } */
+  .nav-logo p {
+    display: none;
+  }
 }
 
 /* Iphone 5 */

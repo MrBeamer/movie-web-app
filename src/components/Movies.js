@@ -4,7 +4,6 @@ import Loader from "./Loader";
 
 export default function Movies(props) {
   const { movies, loading, setMovies } = props;
-  console.log(movies);
 
   useEffect(() => {
     (async () => {
@@ -14,7 +13,6 @@ export default function Movies(props) {
         );
         const data = await response.json();
         setMovies(data.results);
-        console.log(data.results);
       } catch (error) {
         console.log(error);
       }
