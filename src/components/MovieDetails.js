@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import clsx from "clsx";
 import MovieCredits from "./MovieCredits.js";
 import Trailer from "./Trailer.js";
 import TransitionsModal from "./TransitionsModal.js";
@@ -11,6 +10,8 @@ const apiKey = process.env.REACT_APP_MOVIE_KEY;
 export default function MovieDetails() {
   const [movie, setMovie] = useState([]);
   const [open, setOpen] = useState(false);
+  const params = useParams();
+  const id = Number(params.id);
 
   const handleOpen = () => {
     setOpen(true);
@@ -19,16 +20,6 @@ export default function MovieDetails() {
   const handleClose = () => {
     setOpen(false);
   };
-
-  const params = useParams();
-  const id = Number(params.id);
-  const movieScorePercentage = movie?.vote_average * 10;
-
-  const classNames = clsx({
-    green: movieScorePercentage >= 70,
-    yellow: movieScorePercentage < 70,
-    red: movieScorePercentage < 40,
-  });
 
   useEffect(() => {
     (async () => {

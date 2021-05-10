@@ -54,8 +54,13 @@
     overflow: hidden;
   }
 
+  .bookmark li:first-child {
+    margin-right: 6px;
+  }
+
   .bookmark span {
     display: none;
+    margin-right: 0px;
   }
 
   .plot {
@@ -90,6 +95,7 @@
   .overlay {
     grid-column: 1;
     grid-row: 1/11;
+    background-color: var(--color-primary);
   }
 }
 
