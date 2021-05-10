@@ -4,7 +4,7 @@ import clsx from "clsx";
 import MovieCredits from "./MovieCredits.js";
 import Trailer from "./Trailer.js";
 import TransitionsModal from "./TransitionsModal.js";
-import MovieCard from "./MovieCard.js";
+import SimilarMovie from "./SimilarMovie.js";
 
 const apiKey = process.env.REACT_APP_MOVIE_KEY;
 
@@ -49,16 +49,17 @@ export default function MovieDetails() {
     })();
   }, [id]);
 
-  //   const backgroundImage = {
-  //     backgroundImage: `url(https://image.tmdb.org/t/p/w500/${movie.backdrop_path})`,
-  //     backgroundPosition: "center",
-  //     backgroundSize: "cover",
-  //     backgroundRepeat: "no-repeat",
-  //   };
+  const backgroundImage = {
+    backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`,
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    objectFit: "cover",
+  };
 
   return (
     <>
-      <div className="header">
+      <div className="header" style={backgroundImage}>
         <div className="poster">
           <img
             src={
@@ -77,7 +78,6 @@ export default function MovieDetails() {
           <div className="genres">
             <p>{movie.release_date}</p>
             <span>&#8226;</span>
-            {/* <p>{movie?.production_countries[0].iso_3166_1}</p> */}
             {movie.genres?.map((genre) => (
               <p key={genre.name}>{genre.name}</p>
             ))}
@@ -88,6 +88,7 @@ export default function MovieDetails() {
             <p className={classNames}>
               {movie.vote_average === 0 ? "NR" : `${movie.vote_average}`}
             </p>
+            <span> User rating</span>
             <i className="fas fa-bookmark"></i>
             <i className="fas fa-star"></i>
             <button onClick={handleOpen}>
@@ -95,17 +96,20 @@ export default function MovieDetails() {
             </button>
           </div>
           <div className="plot">
-            <p>{movie.tagline}</p>
-            <h4>Plot</h4>
+            <h3>{movie.tagline}</h3>
+            <h3>Plot</h3>
             <p>{movie.overview}</p>
           </div>
         </div>
+        <div className="overlay"></div>
       </div>
       <MovieCredits id={id} />
-      <h1 className="headline">Movies you could like</h1>
+      {movie.similar?.results?.length > 0 && (
+        <h1 className="headline">Similar Movies you could like</h1>
+      )}
       <div className="similar-movie-layout">
         {movie.similar?.results?.map((similarMovie) => (
-          <MovieCard key={similarMovie.id} similarMovie={similarMovie} />
+          <SimilarMovie key={similarMovie.id} similarMovie={similarMovie} />
         ))}
       </div>
       <TransitionsModal open={open} handleClose={handleClose}>

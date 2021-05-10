@@ -43,7 +43,7 @@ export default function Navbar(props) {
           onChange={(event) => {
             setSearchQuery(event.target.value);
           }}
-        ></Input>
+        />
       </form>
     </nav>
   );
