@@ -12,11 +12,108 @@
 
 /* Small phones from 0 - 480 px */
 @media only screen and (max-width: 480px) {
+  .container {
+    margin: 0 18px;
+  }
+
+  .header {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    background-image: none !important;
+  }
+
   .nav-logo p {
     display: none;
+  }
+
+  .poster {
+    grid-row: 1/6;
+    grid-column: 1;
+    justify-self: center;
+    padding-left: 0;
+  }
+
+  .title {
+    grid-column: 1;
+    grid-row: 6;
+    padding: 0 1.25rem;
+  }
+
+  .genres {
+    grid-column: 1;
+    grid-row: 7;
+    padding: 0 1.25rem;
+    line-height: 24px;
+  }
+
+  .bookmark {
+    grid-column: 1;
+    grid-row: 8;
+    padding: 0 1.25rem;
+    padding-top: 10px;
+    overflow: hidden;
+  }
+
+  .bookmark li:first-child {
+    margin-right: 14px;
+  }
+
+  .bookmark span {
+    display: none;
+    margin-right: 0px;
+  }
+
+  .bookmark i {
+    margin-right: 14px;
+  }
+
+  .plot {
+    grid-column: 1;
+    grid-row: 9;
+    padding: 0 1.25rem;
+  }
+
+  .plot h3 {
+    margin-top: 12px;
+  }
+
+  .plot h3:first-child {
+    display: none;
+  }
+
+  .plot p {
+    width: 100%;
+    margin-top: 6px;
+  }
+
+  .header__list {
+    grid-column: 1;
+    grid-row: 10;
+    padding: 0 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .header__list li {
+    margin-bottom: 8px;
+  }
+  .overlay {
+    grid-column: 1;
+    grid-row: 1/11;
+    background-color: var(--color-primary);
   }
 }
 
 /* Iphone 5 */
 @media only screen and (width: 320px) {
+  .container {
+    margin: 0;
+  }
+
+  .bookmark i {
+    margin-right: 12px;
+  }
+
+  .bookmark li:first-child {
+    margin-right: 12px;
+  }
 }

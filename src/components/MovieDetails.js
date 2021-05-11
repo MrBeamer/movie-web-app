@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import clsx from "clsx";
 import MovieCredits from "./MovieCredits.js";
 import Trailer from "./Trailer.js";
 import TransitionsModal from "./TransitionsModal.js";
@@ -11,6 +10,8 @@ const apiKey = process.env.REACT_APP_MOVIE_KEY;
 export default function MovieDetails() {
   const [movie, setMovie] = useState([]);
   const [open, setOpen] = useState(false);
+  const params = useParams();
+  const id = Number(params.id);
 
   const handleOpen = () => {
     setOpen(true);
@@ -19,16 +20,6 @@ export default function MovieDetails() {
   const handleClose = () => {
     setOpen(false);
   };
-
-  const params = useParams();
-  const id = Number(params.id);
-  const movieScorePercentage = movie?.vote_average * 10;
-
-  const classNames = clsx({
-    green: movieScorePercentage >= 70,
-    yellow: movieScorePercentage < 70,
-    red: movieScorePercentage < 40,
-  });
 
   useEffect(() => {
     (async () => {
@@ -49,11 +40,10 @@ export default function MovieDetails() {
   function backgroundImage() {
     if (movie.backdrop_path === null || movie.backdrop_path === undefined)
       return {
-        backgroundImage: `url(https://res.cloudinary.com/dxdboxbyb/image/upload/v1620052094/ayi6tvyiedrlmjiim6yn.png)`,
+        backgroundImage: `url("https://res.cloudinary.com/dxdboxbyb/image/upload/v1620052094/ayi6tvyiedrlmjiim6yn.png")`,
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
-        objectFit: "cover",
       };
 
     return {
@@ -61,7 +51,6 @@ export default function MovieDetails() {
       backgroundPosition: "center",
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
-      objectFit: "cover",
     };
   }
 
@@ -78,54 +67,61 @@ export default function MovieDetails() {
             alt={movie.title}
           />
         </div>
-        <div className="details">
-          <div className="title">
-            <h1>{movie.title}</h1>
-            <h1>({movie.release_date?.slice(0, 4)})</h1>
-          </div>
-          <div className="genres">
-            <p>{movie.release_date}</p>
-            <span>&#8226;</span>
-            {movie.genres?.map((genre) => (
-              <p key={genre.name}>{genre.name}</p>
-            ))}
-            <span>&#8226;</span>
-            <p>{movie.runtime}min</p>
-          </div>
-          <div className="bookmark">
-            <p className={classNames}>
-              {movie.vote_average === 0 ? "NR" : `${movie.vote_average}`}
-            </p>
-            <span> User rating</span>
-            <i className="fas fa-bookmark"></i>
-            <i className="fas fa-star"></i>
-            <button onClick={handleOpen}>
-              <i className="fas fa-play"></i>Watch Trailer
-            </button>
-          </div>
-          <div className="plot">
-            <h3>{movie.tagline}</h3>
-            <h3>Plot</h3>
-            <p>{movie.overview}</p>
-          </div>
-          <ul>
-            <li>
-              <span>Status</span> {movie.status}
-            </li>
-            <li>
-              <span>Budget</span>
-              {movie.budget === 0
-                ? "/"
-                : `$${new Intl.NumberFormat("en-IN").format(movie.budget)}`}
-            </li>
-            <li>
-              <span>Revenue</span>{" "}
-              {movie.revenue === 0
-                ? "/"
-                : `$${new Intl.NumberFormat("en-IN").format(movie.revenue)}`}
-            </li>
-          </ul>
+
+        <div className="title">
+          <h1>
+            {movie.title} ({movie.release_date?.slice(0, 4)})
+          </h1>
         </div>
+        <ul className="genres">
+          <li>{movie.release_date}</li>
+          <li>&#8226;</li>
+          {movie.genres?.map((genre) => (
+            <li key={genre.name}>{genre.name}</li>
+          ))}
+          <li>&#8226;</li>
+          <li>{movie.runtime}min</li>
+        </ul>
+        <ul className="bookmark">
+          <li>{movie.vote_average === 0 ? "NR" : `${movie.vote_average}`}</li>
+          <li>
+            <span> User rating</span>
+          </li>
+          <li>
+            <i className="fas fa-bookmark"></i>
+          </li>
+          <li>
+            <i className="fas fa-star"></i>
+          </li>
+          <li>
+            <button onClick={handleOpen}>
+              <i className="fas fa-play"> </i>
+            </button>
+          </li>
+        </ul>
+        <div className="plot">
+          <h3>{movie.tagline}</h3>
+          <h3>Plot</h3>
+          <p>{movie.overview}</p>
+        </div>
+        <ul className="header__list">
+          <li>
+            <span>Status</span> {movie.status}
+          </li>
+          <li>
+            <span>Budget</span>
+            {movie.budget === 0
+              ? "/"
+              : `$${new Intl.NumberFormat("en-IN").format(movie.budget)}`}
+          </li>
+          <li>
+            <span>Revenue</span>{" "}
+            {movie.revenue === 0
+              ? "/"
+              : `$${new Intl.NumberFormat("en-IN").format(movie.revenue)}`}
+          </li>
+        </ul>
+
         <div className="overlay"></div>
       </div>
       <MovieCredits id={id} />
