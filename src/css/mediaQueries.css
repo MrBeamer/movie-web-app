@@ -30,111 +30,48 @@
   }
 }
 
-@media only screen and (max-width: 675px) {
+@media only screen and (max-width: 701px) {
   .container {
     margin: 0px 15px;
   }
 }
 
-/* Small phones, to small tablets from 481 - 767 px */
-@media only screen and (max-width: 674px) {
-  .container {
-    margin: 0 18px;
-  }
-
-  .header {
-    grid-template-columns: 1fr;
-    column-gap: 0;
-    background-image: none !important;
-  }
-
-  .nav-logo p {
-    display: none;
-  }
-
+@media only screen and (max-width: 671px) {
   .poster {
-    grid-row: 1/6;
-    grid-column: 1;
-    justify-self: center;
-    padding-left: 0;
-  }
-
-  .title {
-    grid-column: 1;
-    grid-row: 6;
-    padding: 0 1.25rem;
-  }
-
-  .genres {
-    grid-column: 1;
-    grid-row: 7;
-    padding: 0 1.25rem;
-    line-height: 24px;
-  }
-
-  .bookmark {
-    grid-column: 1;
-    grid-row: 8;
-    padding: 0 1.25rem;
-    padding-top: 10px;
-    overflow: hidden;
-  }
-
-  .bookmark li:first-child {
-    margin-right: 14px;
-  }
-
-  .bookmark span {
-    display: none;
-    margin-right: 0px;
-  }
-
-  .bookmark i {
-    margin-right: 14px;
+    grid-row: 1/5;
   }
 
   .plot {
-    grid-column: 1;
-    grid-row: 9;
+    grid-column: 1/3;
+    grid-row: 5;
     padding: 0 1.25rem;
   }
-
-  .plot h3 {
-    margin-top: 12px;
+  .header__list {
+    grid-column: 2;
+    grid-row: 4;
   }
 
   .plot h3:first-child {
     display: none;
   }
 
-  .plot p {
-    width: 100%;
-    margin-top: 6px;
+  .bookmark li {
+    padding-bottom: 14px;
   }
 
-  .header__list {
-    grid-column: 1;
-    grid-row: 10;
-    padding: 0 1.25rem;
-    padding-bottom: 1.25rem;
+  .container {
+    margin: 0;
   }
 
-  .header__list li {
-    margin-bottom: 8px;
-  }
-  .overlay {
-    grid-column: 1;
-    grid-row: 1/11;
-    background-color: var(--color-primary);
+  .header {
+    grid-column-gap: 9px;
   }
 
-  .header__list li {
-    line-height: unset;
-  }
+  /* 569 begin mobile */
 }
 
-/* Small phones from 0 - 480 px */
-@media only screen and (max-width: 480px) {
+/* Small phones from 480 px */
+@media only screen and (max-width: 569px) {
   .container {
     margin: 0 18px;
   }
