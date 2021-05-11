@@ -4,12 +4,14 @@ import MovieCredits from "./MovieCredits.js";
 import Trailer from "./Trailer.js";
 import TransitionsModal from "./TransitionsModal.js";
 import SimilarMovie from "./SimilarMovie.js";
+import Loader from "./Loader.js";
 
 const apiKey = process.env.REACT_APP_MOVIE_KEY;
 
 export default function MovieDetails() {
   const [movie, setMovie] = useState([]);
   const [open, setOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const params = useParams();
   const id = Number(params.id);
 
@@ -23,6 +25,7 @@ export default function MovieDetails() {
 
   useEffect(() => {
     (async () => {
+      setIsLoading(true);
       try {
         const response = await fetch(
           `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&append_to_response=similar`
@@ -33,6 +36,8 @@ export default function MovieDetails() {
         setMovie(data);
       } catch (error) {
         console.log(error);
+      } finally {
+        setIsLoading(false);
       }
     })();
   }, [id]);
@@ -40,10 +45,7 @@ export default function MovieDetails() {
   function backgroundImage() {
     if (movie.backdrop_path === null || movie.backdrop_path === undefined)
       return {
-        backgroundImage: `url("https://res.cloudinary.com/dxdboxbyb/image/upload/v1620052094/ayi6tvyiedrlmjiim6yn.png")`,
-        backgroundPosition: "center",
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
+        backgroundImage: ``,
       };
 
     return {
@@ -54,14 +56,16 @@ export default function MovieDetails() {
     };
   }
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <>
       <div className="header" style={backgroundImage()}>
         <div className="poster">
           <img
             src={
               movie.poster_path === null || movie.poster_path === undefined
-                ? "https://res.cloudinary.com/dxdboxbyb/image/upload/v1620052094/ayi6tvyiedrlmjiim6yn.png"
+                ? "https://res.cloudinary.com/dxdboxbyb/image/upload/c_scale,h_450,w_300/v1620052094/ayi6tvyiedrlmjiim6yn.jpg"
                 : `https://image.tmdb.org/t/p/w300/${movie.poster_path}`
             }
             alt={movie.title}
