@@ -55,12 +55,16 @@
   }
 
   .bookmark li:first-child {
-    margin-right: 6px;
+    margin-right: 14px;
   }
 
   .bookmark span {
     display: none;
     margin-right: 0px;
+  }
+
+  .bookmark i {
+    margin-right: 14px;
   }
 
   .plot {
@@ -103,5 +107,13 @@
 @media only screen and (width: 320px) {
   .container {
     margin: 0;
+  }
+
+  .bookmark i {
+    margin-right: 12px;
+  }
+
+  .bookmark li:first-child {
+    margin-right: 12px;
   }
 }

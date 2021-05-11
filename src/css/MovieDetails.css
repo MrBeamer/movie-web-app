@@ -137,7 +137,6 @@
 }
 
 .bookmark li {
-  /* margin-right: 6px; */
   display: inline-block;
 }
 
@@ -146,12 +145,14 @@
   color: var(--white);
   border: none;
   transition: all 0.5s;
+  padding-left: 0;
 }
 
 .bookmark i:hover {
   background-color: var(--color-hover);
   border: none;
   cursor: pointer;
+  filter: brightness(110%);
 }
 
 .genres li {

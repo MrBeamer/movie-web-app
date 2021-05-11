@@ -95,7 +95,7 @@ export default function MovieDetails() {
           </li>
           <li>
             <button onClick={handleOpen}>
-              <i className="fas fa-play"></i>Watch Trailer
+              <i className="fas fa-play"> </i>
             </button>
           </li>
         </ul>
