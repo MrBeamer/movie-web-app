@@ -57,7 +57,9 @@ export default function MovieDetails() {
   }
 
   return isLoading ? (
-    <Loader />
+    <div className="loader">
+      <Loader />
+    </div>
   ) : (
     <>
       <div className="header" style={backgroundImage()}>
