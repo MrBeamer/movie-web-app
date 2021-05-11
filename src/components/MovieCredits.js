@@ -7,18 +7,23 @@ export default function MovieCredits({ id }) {
   const [cast, setCast] = useState([]);
 
   useEffect(() => {
-    (async () => {
+    //fixing memory leak and race condition
+    let isComponentMounted = true;
+    const fetchData = async () => {
       try {
         const response = await fetch(
           `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${apiKey}`
         );
-
         const data = await response.json();
-        setCast(data.cast);
+        if (isComponentMounted) setCast(data.cast);
       } catch (error) {
         console.log(error);
       }
-    })();
+    };
+    fetchData();
+    return () => {
+      isComponentMounted = false;
+    };
   }, [id]);
   return (
     <>

@@ -32,7 +32,6 @@ export default function MovieDetails() {
         );
         if (!response.ok) throw new Error("Problem getting movie details.");
         const data = await response.json();
-        console.log(data);
         setMovie(data);
       } catch (error) {
         console.log(error);
