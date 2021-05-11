@@ -1,13 +1,136 @@
-/* Big tablet to 1200 px (width smaller then row 1140px) */
-@media only screen and (max-width: 1200px) {
-}
-
 /* Small tablet,to big tablet from 768 - 1023 px */
 @media only screen and (max-width: 1023px) {
+  /* 860 */
+
+  .header {
+    grid-column-gap: 24px;
+  }
+
+  .plot p {
+    width: 100%;
+  }
+
+  .genres li {
+    line-height: 23px;
+  }
+
+  .bookmark i {
+    margin-right: 13px;
+  }
+  .bookmark li:first-child {
+    margin-right: 13px;
+  }
+
+  .bookmark span {
+    display: none;
+  }
+
+  .header__list li {
+    line-height: 24px;
+  }
+}
+
+@media only screen and (max-width: 675px) {
+  .container {
+    margin: 0px 15px;
+  }
 }
 
 /* Small phones, to small tablets from 481 - 767 px */
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 674px) {
+  .container {
+    margin: 0 18px;
+  }
+
+  .header {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    background-image: none !important;
+  }
+
+  .nav-logo p {
+    display: none;
+  }
+
+  .poster {
+    grid-row: 1/6;
+    grid-column: 1;
+    justify-self: center;
+    padding-left: 0;
+  }
+
+  .title {
+    grid-column: 1;
+    grid-row: 6;
+    padding: 0 1.25rem;
+  }
+
+  .genres {
+    grid-column: 1;
+    grid-row: 7;
+    padding: 0 1.25rem;
+    line-height: 24px;
+  }
+
+  .bookmark {
+    grid-column: 1;
+    grid-row: 8;
+    padding: 0 1.25rem;
+    padding-top: 10px;
+    overflow: hidden;
+  }
+
+  .bookmark li:first-child {
+    margin-right: 14px;
+  }
+
+  .bookmark span {
+    display: none;
+    margin-right: 0px;
+  }
+
+  .bookmark i {
+    margin-right: 14px;
+  }
+
+  .plot {
+    grid-column: 1;
+    grid-row: 9;
+    padding: 0 1.25rem;
+  }
+
+  .plot h3 {
+    margin-top: 12px;
+  }
+
+  .plot h3:first-child {
+    display: none;
+  }
+
+  .plot p {
+    width: 100%;
+    margin-top: 6px;
+  }
+
+  .header__list {
+    grid-column: 1;
+    grid-row: 10;
+    padding: 0 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .header__list li {
+    margin-bottom: 8px;
+  }
+  .overlay {
+    grid-column: 1;
+    grid-row: 1/11;
+    background-color: var(--color-primary);
+  }
+
+  .header__list li {
+    line-height: unset;
+  }
 }
 
 /* Small phones from 0 - 480 px */
@@ -101,22 +224,11 @@
     grid-row: 1/11;
     background-color: var(--color-primary);
   }
+
+  .header__list li {
+    line-height: unset;
+  }
 }
-
-/* Iphone 5 */
-/* @media only screen and (width: 320px) {
-  .container {
-    margin: 0;
-  }
-
-  .bookmark i {
-    margin-right: 12px;
-  }
-
-  .bookmark li:first-child {
-    margin-right: 12px;
-  }
-} */
 
 @media only screen and (max-width: 363px) {
   .container {

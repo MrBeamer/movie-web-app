@@ -125,8 +125,7 @@
   letter-spacing: 0.8px;
   font-weight: 300;
   line-height: 25px;
-  /* width: 84%; */
-  width: 70%;
+  width: 80%;
 }
 
 .bookmark {
@@ -142,7 +141,7 @@
   color: var(--white);
   border: none;
   transition: all 0.5s;
-  padding-left: 0;
+  padding: 0;
 }
 
 .bookmark i:hover {
