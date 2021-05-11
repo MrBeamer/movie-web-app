@@ -104,7 +104,7 @@
 }
 
 /* Iphone 5 */
-@media only screen and (width: 320px) {
+/* @media only screen and (width: 320px) {
   .container {
     margin: 0;
   }
@@ -115,5 +115,22 @@
 
   .bookmark li:first-child {
     margin-right: 12px;
+  }
+} */
+
+@media only screen and (max-width: 363px) {
+  .container {
+    margin: 0;
+  }
+
+  .bookmark i {
+    margin-right: 12px;
+  }
+
+  .bookmark li:first-child {
+    margin-right: 12px;
+  }
+  .headline {
+    margin-left: 20px;
   }
 }

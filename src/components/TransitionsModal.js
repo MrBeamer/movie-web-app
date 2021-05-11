@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
     border: "none",
     borderRadius: "3px",
     padding: 10,
+    outline: "none",
   },
 }));
 
