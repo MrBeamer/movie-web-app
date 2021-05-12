@@ -16,13 +16,6 @@ body {
   --white: #fff;
   --black: #000;
 
-  /* Is the old background color */
-  --primary-2: #2e3047;
-  /* Is the old secondary color */
-  --secondary-1: #424566;
-  /* Is the old tertiary color */
-  --primary-3: #707793;
-
   --color-primary: #d81f26;
   --color-secondary: #fff;
   --color-tertiary: #707793;

@@ -4,6 +4,8 @@ import MovieCredits from "./MovieCredits.js";
 import Trailer from "./Trailer.js";
 import TransitionsModal from "./TransitionsModal.js";
 import SimilarMovie from "./SimilarMovie.js";
+import Tooltip from "@material-ui/core/Tooltip";
+import Zoom from "@material-ui/core/Zoom";
 import Loader from "./Loader.js";
 
 const apiKey = process.env.REACT_APP_MOVIE_KEY;
@@ -93,14 +95,20 @@ export default function MovieDetails() {
             <span> User rating</span>
           </li>
           <li>
-            <i className="fas fa-bookmark"></i>
+            <Tooltip title="Add to Watchlist" arrow TransitionComponent={Zoom}>
+              <i className="fas fa-bookmark"></i>
+            </Tooltip>
           </li>
           <li>
-            <i className="fas fa-star"></i>
+            <Tooltip title="Rate" arrow TransitionComponent={Zoom}>
+              <i className="fas fa-star"></i>
+            </Tooltip>
           </li>
           <li>
             <button onClick={handleOpen}>
-              <i className="fas fa-play"> </i>
+              <Tooltip title="Play Trailer" arrow TransitionComponent={Zoom}>
+                <i className="fas fa-play"> </i>
+              </Tooltip>
             </button>
           </li>
         </ul>
@@ -140,7 +148,7 @@ export default function MovieDetails() {
       </div>
       <TransitionsModal open={open} handleClose={handleClose}>
         <div className="close-button" onClick={handleClose}>
-          <i class="fas fa-times"></i>
+          <i className="fas fa-times"></i>
         </div>
         <Trailer id={id} />
       </TransitionsModal>

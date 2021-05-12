@@ -1,7 +1,4 @@
-/* Small tablet,to big tablet from 768 - 1023 px */
 @media only screen and (max-width: 1023px) {
-  /* 860 */
-
   .header {
     grid-column-gap: 24px;
   }
@@ -72,6 +69,11 @@
 
 /* Small phones from 480 px */
 @media only screen and (max-width: 569px) {
+  iframe {
+    height: 244px;
+    width: 359px;
+  }
+
   .container {
     margin: 0 18px;
   }
