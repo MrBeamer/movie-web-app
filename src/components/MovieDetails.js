@@ -10,12 +10,13 @@ import Loader from "./Loader.js";
 
 const apiKey = process.env.REACT_APP_MOVIE_KEY;
 
-export default function MovieDetails() {
+export default function MovieDetails(props) {
   const [movie, setMovie] = useState([]);
   const [open, setOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const params = useParams();
   const id = Number(params.id);
+  const { handleAddMovieToWatch } = props;
 
   const handleOpen = () => {
     setOpen(true);
@@ -96,7 +97,10 @@ export default function MovieDetails() {
           </li>
           <li>
             <Tooltip title="Add to Watchlist" arrow TransitionComponent={Zoom}>
-              <i className="fas fa-bookmark"></i>
+              <i
+                onClick={() => handleAddMovieToWatch(movie)}
+                className="fas fa-bookmark"
+              ></i>
             </Tooltip>
           </li>
           <li>
