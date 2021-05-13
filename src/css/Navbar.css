@@ -31,6 +31,6 @@
 .navbar a {
   align-self: center;
   text-decoration: none;
-  color: black;
+  color: var(--black);
   list-style: none;
 }

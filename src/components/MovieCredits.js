@@ -7,7 +7,6 @@ export default function MovieCredits({ id }) {
   const [cast, setCast] = useState([]);
 
   useEffect(() => {
-    //fixing memory leak and race condition
     let isComponentMounted = true;
     const fetchData = async () => {
       try {
@@ -20,6 +19,7 @@ export default function MovieCredits({ id }) {
         console.log(error);
       }
     };
+    //fixing memory leak and race condition
     fetchData();
     return () => {
       isComponentMounted = false;

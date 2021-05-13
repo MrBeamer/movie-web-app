@@ -27,7 +27,7 @@
   padding: 0.138rem 0.625rem;
   overflow: hidden;
 }
-/*  */
+
 .score {
   position: relative;
 }
@@ -48,17 +48,17 @@
 }
 
 /* Review score  */
-.green {
+.movie-card .green {
   color: #22d07a;
-  border-color: #22d07a !important;
+  border-color: #22d07a;
 }
 
-.yellow {
+.movie-card .yellow {
   color: #d2d530;
-  border-color: #d2d530 !important;
+  border-color: #d2d530;
 }
 
-.red {
+.movie-card .red {
   color: #db2360;
-  border-color: #db2360 !important;
+  border-color: #db2360;
 }

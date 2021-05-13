@@ -1,6 +1,5 @@
 .cast-layout {
   display: grid;
-  /* grid-template-columns: repeat(auto-fit, minmax(150px, 200px)); */
   grid-template-columns: repeat(99, 140px);
   grid-column-gap: 25px;
   grid-auto-flow: column;

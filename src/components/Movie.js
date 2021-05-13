@@ -15,11 +15,6 @@ export default function Movies(props) {
   const movieTitle =
     movie.title.length > 30 ? movie.title.slice(0, 30) + "..." : movie.title;
 
-  // function handleImageError(event) {
-  //   event.target.src =
-  //     "https://res.cloudinary.com/dxdboxbyb/image/upload/v1620052094/ayi6tvyiedrlmjiim6yn.png";
-  // }
-
   return (
     <div className="movie-card">
       <div className="score">

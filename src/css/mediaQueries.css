@@ -63,11 +63,8 @@
   .header {
     grid-column-gap: 9px;
   }
-
-  /* 569 begin mobile */
 }
 
-/* Small phones from 480 px */
 @media only screen and (max-width: 569px) {
   iframe {
     height: 244px;

@@ -22,7 +22,6 @@ body {
 
   --color-grey: #e3e6eb;
   --color-grey-lighter: #f5f5f7;
-
   --color-hover: #1fd8d1;
 }
 
@@ -31,13 +30,6 @@ body {
   /* height: 100vh; */
   height: 100%;
   transition: all 0.6s;
-}
-
-.loader {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
 }
 
 .headline {

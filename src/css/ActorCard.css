@@ -1,5 +1,5 @@
 .actorCard {
-  background-color: white;
+  background-color: var(--white);
   border-radius: 3px;
   box-shadow: 0 0 15px rgb(0 0 0 / 8%);
 }

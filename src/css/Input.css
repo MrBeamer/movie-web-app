@@ -17,5 +17,4 @@ input:focus {
 
 ::placeholder {
   color: var(--color-tertiary);
-  /* color: #cbcbd5; */
 }

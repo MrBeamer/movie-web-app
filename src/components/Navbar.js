@@ -2,11 +2,26 @@ import React from "react";
 import logo from "../logo.svg";
 import Input from "./Input.js";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Slide } from "react-toastify";
 
 const apiKey = process.env.REACT_APP_MOVIE_KEY;
 
 export default function Navbar(props) {
   const { setSearchQuery, searchQuery, setMovies, setLoading } = props;
+
+  function renderError(msg) {
+    toast.error(msg, {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  }
 
   async function handleSearchSubmit(event) {
     event.preventDefault();
@@ -16,11 +31,13 @@ export default function Navbar(props) {
         `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchQuery}`
       );
 
-      if (!response.ok) throw Error(`Movie not found ${response.status}`);
+      if (!response.ok) throw Error(`Movie not found`);
+      // (Error ${response.status})
 
       const data = await response.json();
       setMovies(data.results);
     } catch (error) {
+      // renderError(String(error));
       console.log(error);
     } finally {
       setLoading(false);
@@ -29,22 +46,26 @@ export default function Navbar(props) {
   }
 
   return (
-    <nav className="navbar">
-      <Link className="nav-logo" to="/">
-        <img src={logo} alt="logo" />
-        <p>Moviesquare</p>
-      </Link>
-      <form className="nav-form" onSubmit={handleSearchSubmit}>
-        <Input
-          type="text"
-          placeholder="Search..."
-          className="nav-search"
-          value={searchQuery}
-          onChange={(event) => {
-            setSearchQuery(event.target.value);
-          }}
-        />
-      </form>
-    </nav>
+    <>
+      <nav className="navbar">
+        <Link className="nav-logo" to="/">
+          <img src={logo} alt="logo" />
+          <p>Moviesquare</p>
+        </Link>
+        <form className="nav-form" onSubmit={handleSearchSubmit}>
+          <Input
+            required
+            type="text"
+            placeholder="Search..."
+            className="nav-search"
+            value={searchQuery}
+            onChange={(event) => {
+              setSearchQuery(event.target.value);
+            }}
+          />
+        </form>
+      </nav>
+      <ToastContainer transition={Slide} />
+    </>
   );
 }

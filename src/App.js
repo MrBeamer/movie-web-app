@@ -10,6 +10,7 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
+
   return (
     <BrowserRouter>
       <Navbar
@@ -18,7 +19,6 @@ export default function App() {
         setSearchQuery={setSearchQuery}
         setMovies={setMovies}
       />
-
       <div className="container">
         <Switch>
           <Route exact path="/">
