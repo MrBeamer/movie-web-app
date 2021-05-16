@@ -1,0 +1,19 @@
+.genre-list {
+  list-style: none;
+  overflow-x: scroll;
+  white-space: nowrap;
+  font-size: 1.5rem;
+  padding-inline-start: 12px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.genre-list__item {
+  display: inline-block;
+  margin-right: 1rem;
+  padding-right: 1rem;
+}
+
+.genre-list::-webkit-scrollbar {
+  display: none;
+}
