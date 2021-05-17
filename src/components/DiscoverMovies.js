@@ -1,28 +1,43 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
 const apiKey = process.env.REACT_APP_MOVIE_KEY;
 
 export default function DiscoverMovies(props) {
   const { setMovies } = props;
   const [genres, setGenres] = useState([]);
+  const params = useParams();
+  const paramsId = params.id;
+  console.log(paramsId);
 
-  async function handleGetMovieList(event) {
-    // if (event.target.className !== "active") return;
-    // console.log("test");
-    const genreId = Number(event.target.id);
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${paramsId}`
+        );
+        const data = await response.json();
+        setMovies(data.results);
+        console.log(data.results);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, [setMovies, paramsId]);
 
-    try {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${genreId}`
-      );
-      const data = await response.json();
-      setMovies(data.results);
-      console.log(data.results);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  //   async function handleGetMovieList(event) {
+  //     const genreId = Number(event.target.id);
+  //     try {
+  //       const response = await fetch(
+  //         `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${genreId}`
+  //       );
+  //       const data = await response.json();
+  //       setMovies(data.results);
+  //       console.log(data.results);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
 
   useEffect(() => {
     (async () => {
@@ -45,11 +60,11 @@ export default function DiscoverMovies(props) {
         {genres.map((genre) => (
           <li className="genre-list__item" key={genre.id}>
             <NavLink
-              id={genre.id}
               exact
-              onClick={handleGetMovieList}
+              id={genre.id}
+              //   onClick={handleGetMovieList}
               activeClassName="active"
-              to={`/genre/${genre.name}`}
+              to={`/genre/${genre.id}-${genre.name}`}
             >
               {genre.name}
             </NavLink>

@@ -34,19 +34,19 @@ export default function App() {
     });
   }
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const response = await fetch(
-          `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`
-        );
-        const data = await response.json();
-        setMovies(data.results);
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-  }, [setMovies]);
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       const response = await fetch(
+  //         `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`
+  //       );
+  //       const data = await response.json();
+  //       setMovies(data.results);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   })();
+  // }, [setMovies]);
 
   return (
     <BrowserRouter>
@@ -68,7 +68,8 @@ export default function App() {
             {/* <SearchResult /> */}
           </Route>
 
-          <Route exact path="/genre/:name">
+          {/* <Route exact path="/genre/:name"> */}
+          <Route exact path="/genre/:id-:name">
             <DiscoverMovies setMovies={setMovies} />
             <Movies movies={movies} loading={loading} />
           </Route>
