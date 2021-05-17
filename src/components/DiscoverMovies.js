@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Switch, Route, NavLink } from "react-router-dom";
 
 const apiKey = process.env.REACT_APP_MOVIE_KEY;
 
@@ -7,8 +7,9 @@ export default function DiscoverMovies(props) {
   const { setMovies } = props;
   const [genres, setGenres] = useState([]);
 
-  async function handdleGetMovieList(event) {
-    console.log(Number(event.target.id));
+  async function handleGetMovieList(event) {
+    if (event.target.className !== "active") return;
+
     const genreId = Number(event.target.id);
 
     try {
@@ -40,18 +41,33 @@ export default function DiscoverMovies(props) {
   console.log(genres);
 
   return (
-    <ul className="genre-list">
-      {genres?.map((genre) => (
-        <li
-          onClick={handdleGetMovieList}
-          className="genre-list__item"
-          key={genre.id}
-        >
-          <NavLink id={genre.id} exact activeClassName="active" to="#">
-            {genre.name}
-          </NavLink>
-        </li>
-      ))}
-    </ul>
+    <>
+      <ul className="genre-list">
+        {genres.map((genre) => (
+          <li
+            onClick={handleGetMovieList}
+            className="genre-list__item"
+            key={genre.id}
+          >
+            <NavLink
+              id={genre.id}
+              exact
+              activeClassName="active"
+              to={`/genre/${genre.name}`}
+            >
+              {genre.name}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
+      {/* <Switch>
+        <Route exact path={match.path}>
+          <ProductDetailInfo
+            productDetails={productDetails}
+            onProductAdd={props.onProductAdd}
+          />
+        </Route>
+      </Switch> */}
+    </>
   );
 }

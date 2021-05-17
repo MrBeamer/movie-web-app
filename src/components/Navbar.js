@@ -5,11 +5,13 @@ import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Slide } from "react-toastify";
+import { useHistory } from "react-router-dom";
 
 const apiKey = process.env.REACT_APP_MOVIE_KEY;
 
 export default function Navbar(props) {
   const { setSearchQuery, searchQuery, setMovies, setLoading } = props;
+  let history = useHistory();
 
   function renderError(msg) {
     toast.error(msg, {
@@ -36,6 +38,7 @@ export default function Navbar(props) {
 
       const data = await response.json();
       setMovies(data.results);
+      history.push(`/?search=${searchQuery}`);
     } catch (error) {
       // renderError(String(error));
       console.log(error);
@@ -44,7 +47,7 @@ export default function Navbar(props) {
       setSearchQuery("");
     }
   }
-
+  console.log(searchQuery);
   return (
     <>
       <nav className="navbar">

@@ -7,6 +7,7 @@ import Movies from "./components/Movies.js";
 import MovieDetails from "./components/MovieDetails.js";
 import Watchlist from "./components/Watchlist";
 import DiscoverMovies from "./components/DiscoverMovies";
+import SearchResult from "./components/SearchResult";
 
 export default function App() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -47,6 +48,16 @@ export default function App() {
             <DiscoverMovies setMovies={setMovies} />
             <Movies movies={movies} loading={loading} setMovies={setMovies} />
           </Route>
+
+          <Route exact path={`/?search=:searchQuery}`}>
+            <SearchResult />
+          </Route>
+
+          <Route exact path="/genre/:name">
+            <DiscoverMovies setMovies={setMovies} />
+            <Movies movies={movies} loading={loading} setMovies={setMovies} />
+          </Route>
+
           <Route exact path="/movie/:id">
             <MovieDetails handleAddMovieToWatch={handleAddMovieToWatch} />
           </Route>
