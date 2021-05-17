@@ -47,7 +47,6 @@ export default function Navbar(props) {
       setSearchQuery("");
     }
   }
-  console.log(searchQuery);
   return (
     <>
       <nav className="navbar">

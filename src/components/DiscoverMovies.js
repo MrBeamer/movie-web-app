@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Switch, Route, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const apiKey = process.env.REACT_APP_MOVIE_KEY;
 
@@ -8,8 +8,8 @@ export default function DiscoverMovies(props) {
   const [genres, setGenres] = useState([]);
 
   async function handleGetMovieList(event) {
-    if (event.target.className !== "active") return;
-
+    // if (event.target.className !== "active") return;
+    // console.log("test");
     const genreId = Number(event.target.id);
 
     try {
@@ -38,20 +38,16 @@ export default function DiscoverMovies(props) {
       }
     })();
   }, [setGenres]);
-  console.log(genres);
 
   return (
     <>
       <ul className="genre-list">
         {genres.map((genre) => (
-          <li
-            onClick={handleGetMovieList}
-            className="genre-list__item"
-            key={genre.id}
-          >
+          <li className="genre-list__item" key={genre.id}>
             <NavLink
               id={genre.id}
               exact
+              onClick={handleGetMovieList}
               activeClassName="active"
               to={`/genre/${genre.name}`}
             >
@@ -60,14 +56,6 @@ export default function DiscoverMovies(props) {
           </li>
         ))}
       </ul>
-      {/* <Switch>
-        <Route exact path={match.path}>
-          <ProductDetailInfo
-            productDetails={productDetails}
-            onProductAdd={props.onProductAdd}
-          />
-        </Route>
-      </Switch> */}
     </>
   );
 }

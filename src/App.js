@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./css/App.css";
 import "normalize.css";
@@ -8,6 +8,8 @@ import MovieDetails from "./components/MovieDetails.js";
 import Watchlist from "./components/Watchlist";
 import DiscoverMovies from "./components/DiscoverMovies";
 import SearchResult from "./components/SearchResult";
+
+const apiKey = process.env.REACT_APP_MOVIE_KEY;
 
 export default function App() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -32,7 +34,19 @@ export default function App() {
     });
   }
 
-  console.log(watchlist);
+  useEffect(() => {
+    (async () => {
+      try {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`
+        );
+        const data = await response.json();
+        setMovies(data.results);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, [setMovies]);
 
   return (
     <BrowserRouter>
@@ -42,20 +56,21 @@ export default function App() {
         setSearchQuery={setSearchQuery}
         setMovies={setMovies}
       />
+
       <div className="container">
         <Switch>
           <Route exact path="/">
             <DiscoverMovies setMovies={setMovies} />
-            <Movies movies={movies} loading={loading} setMovies={setMovies} />
+            <Movies movies={movies} loading={loading} />
           </Route>
 
           <Route exact path={`/?search=:searchQuery}`}>
-            <SearchResult />
+            {/* <SearchResult /> */}
           </Route>
 
           <Route exact path="/genre/:name">
             <DiscoverMovies setMovies={setMovies} />
-            <Movies movies={movies} loading={loading} setMovies={setMovies} />
+            <Movies movies={movies} loading={loading} />
           </Route>
 
           <Route exact path="/movie/:id">
