@@ -8,17 +8,9 @@ export default function DiscoverMovies(props) {
   const [genres, setGenres] = useState([]);
   const params = useParams();
   const paramsId = params.id;
-  const first = useRef(true);
-  console.log(params);
   const route = useRouteMatch();
-  console.log(route);
 
   useEffect(() => {
-    // if (first.current) {
-    //   console.log(first.current);
-    //   first.current = false;
-    //   return;
-    // }
     (async () => {
       try {
         // const response =
@@ -47,13 +39,13 @@ export default function DiscoverMovies(props) {
         }
 
         const data = await response.json();
-        setMovies(data.results);
-        console.log(data.results);
+        console.log(data);
+        if (data.results.length > 0) setMovies(data.results);
       } catch (error) {
         console.log(error);
       }
     })();
-  }, [setMovies, paramsId]);
+  }, [setMovies, paramsId, route.path]);
 
   useEffect(() => {
     (async () => {
@@ -64,7 +56,6 @@ export default function DiscoverMovies(props) {
         const data = await response.json();
         const newGenres = [{ id: 23, name: "Popular" }, ...data.genres];
         setGenres(newGenres);
-        // console.log(newGenres);
       } catch (error) {
         console.log(error);
       }

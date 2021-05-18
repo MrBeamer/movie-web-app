@@ -26,6 +26,7 @@ export default function Navbar(props) {
   }
 
   async function handleSearchSubmit(event) {
+    console.log(history);
     event.preventDefault();
     setLoading(true);
     try {
@@ -38,9 +39,11 @@ export default function Navbar(props) {
 
       const data = await response.json();
       setMovies(data.results);
-      history.push(`/?search=${searchQuery}`);
+      // history.push(`/?search=${searchQuery}`);
+      // history.push(`/search?query=${searchQuery}`);
+      history.push(`/search/${searchQuery}`);
     } catch (error) {
-      // renderError(String(error));
+      // renderError(String(error))
       console.log(error);
     } finally {
       setLoading(false);

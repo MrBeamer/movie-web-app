@@ -11,12 +11,12 @@ import Loader from "./Loader.js";
 const apiKey = process.env.REACT_APP_MOVIE_KEY;
 
 export default function MovieDetails(props) {
+  const { handleAddMovieToWatch } = props;
   const [movie, setMovie] = useState([]);
   const [open, setOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const params = useParams();
   const id = Number(params.id);
-  const { handleAddMovieToWatch } = props;
 
   const handleOpen = () => {
     setOpen(true);

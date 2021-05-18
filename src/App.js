@@ -9,8 +9,6 @@ import Watchlist from "./components/Watchlist";
 import DiscoverMovies from "./components/DiscoverMovies";
 import SearchResult from "./components/SearchResult";
 
-const apiKey = process.env.REACT_APP_MOVIE_KEY;
-
 export default function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [movies, setMovies] = useState([]);
@@ -34,20 +32,6 @@ export default function App() {
     });
   }
 
-  // useEffect(() => {
-  //   (async () => {
-  //     try {
-  //       const response = await fetch(
-  //         `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`
-  //       );
-  //       const data = await response.json();
-  //       setMovies(data.results);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   })();
-  // }, []);
-
   return (
     <BrowserRouter>
       <Navbar
@@ -64,7 +48,10 @@ export default function App() {
             <Movies movies={movies} loading={loading} />
           </Route>
 
-          <Route exact path={`/?search=:searchQuery}`}>
+          {/* <Route exact path={`/?search=:searchQuery}`}> */}
+          <Route exact path="/search/:searchQuery">
+            <DiscoverMovies />
+            {/* <Route exact path={`/search}`}> */}
             <Movies movies={movies} loading={loading} />
 
             {/* <SearchResult /> */}
