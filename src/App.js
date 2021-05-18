@@ -38,7 +38,7 @@ export default function App() {
   //   (async () => {
   //     try {
   //       const response = await fetch(
-  //         `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`
+  //         `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`
   //       );
   //       const data = await response.json();
   //       setMovies(data.results);
@@ -46,7 +46,7 @@ export default function App() {
   //       console.log(error);
   //     }
   //   })();
-  // }, [setMovies]);
+  // }, []);
 
   return (
     <BrowserRouter>
@@ -65,10 +65,11 @@ export default function App() {
           </Route>
 
           <Route exact path={`/?search=:searchQuery}`}>
+            <Movies movies={movies} loading={loading} />
+
             {/* <SearchResult /> */}
           </Route>
 
-          {/* <Route exact path="/genre/:name"> */}
           <Route exact path="/genre/:id-:name">
             <DiscoverMovies setMovies={setMovies} />
             <Movies movies={movies} loading={loading} />

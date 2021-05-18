@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import React, { useEffect, useState, useRef } from "react";
+import { NavLink, useParams, useRouteMatch } from "react-router-dom";
 
 const apiKey = process.env.REACT_APP_MOVIE_KEY;
 
@@ -8,14 +8,44 @@ export default function DiscoverMovies(props) {
   const [genres, setGenres] = useState([]);
   const params = useParams();
   const paramsId = params.id;
-  console.log(paramsId);
+  const first = useRef(true);
+  console.log(params);
+  const route = useRouteMatch();
+  console.log(route);
 
   useEffect(() => {
+    // if (first.current) {
+    //   console.log(first.current);
+    //   first.current = false;
+    //   return;
+    // }
     (async () => {
       try {
-        const response = await fetch(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${paramsId}`
-        );
+        // const response =
+        //   paramsId === "23"
+        //     ? await fetch(
+        //         `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`
+        //       )
+        //     : await fetch(
+        //         `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${paramsId}`
+        //       );
+
+        let response = "";
+
+        if (route.path === "/") {
+          response = await fetch(
+            `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`
+          );
+        } else if (paramsId === "23") {
+          response = await fetch(
+            `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`
+          );
+        } else {
+          response = await fetch(
+            `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${paramsId}`
+          );
+        }
+
         const data = await response.json();
         setMovies(data.results);
         console.log(data.results);
@@ -25,20 +55,6 @@ export default function DiscoverMovies(props) {
     })();
   }, [setMovies, paramsId]);
 
-  //   async function handleGetMovieList(event) {
-  //     const genreId = Number(event.target.id);
-  //     try {
-  //       const response = await fetch(
-  //         `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${genreId}`
-  //       );
-  //       const data = await response.json();
-  //       setMovies(data.results);
-  //       console.log(data.results);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-
   useEffect(() => {
     (async () => {
       try {
@@ -46,8 +62,9 @@ export default function DiscoverMovies(props) {
           `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`
         );
         const data = await response.json();
-        setGenres(data.genres);
-        console.log(data.genres);
+        const newGenres = [{ id: 23, name: "Popular" }, ...data.genres];
+        setGenres(newGenres);
+        // console.log(newGenres);
       } catch (error) {
         console.log(error);
       }
@@ -57,12 +74,15 @@ export default function DiscoverMovies(props) {
   return (
     <>
       <ul className="genre-list">
+        <li className="genre-list__item">
+          <NavLink exact activeClassName="active" to="/">
+            Upcoming
+          </NavLink>
+        </li>
         {genres.map((genre) => (
           <li className="genre-list__item" key={genre.id}>
             <NavLink
               exact
-              id={genre.id}
-              //   onClick={handleGetMovieList}
               activeClassName="active"
               to={`/genre/${genre.id}-${genre.name}`}
             >
