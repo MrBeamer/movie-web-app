@@ -14,6 +14,7 @@ export default function App() {
   const [movies, setMovies] = useState([]);
   const [watchlist, setWatchlist] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [pageNumber, setPageNumber] = useState(1);
 
   function handleAddMovieToWatch(addedMovie) {
     if (watchlist.length === 0) {
@@ -44,14 +45,21 @@ export default function App() {
       <div className="container">
         <Switch>
           <Route exact path="/">
-            <DiscoverMovies setMovies={setMovies} />
-            <Movies movies={movies} loading={loading} />
+            <DiscoverMovies
+              movies={movies}
+              setMovies={setMovies}
+              pageNumber={pageNumber}
+            />
+            <Movies
+              setPageNumber={setPageNumber}
+              pageNumber={pageNumber}
+              movies={movies}
+              loading={loading}
+            />
           </Route>
 
-          {/* <Route exact path={`/?search=:searchQuery}`}> */}
           <Route exact path="/search/:searchQuery">
             <DiscoverMovies />
-            {/* <Route exact path={`/search}`}> */}
             <Movies movies={movies} loading={loading} />
 
             {/* <SearchResult /> */}

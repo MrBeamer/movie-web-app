@@ -36,11 +36,8 @@ export default function Navbar(props) {
 
       if (!response.ok) throw Error(`Movie not found`);
       // (Error ${response.status})
-
       const data = await response.json();
       setMovies(data.results);
-      // history.push(`/?search=${searchQuery}`);
-      // history.push(`/search?query=${searchQuery}`);
       history.push(`/search/${searchQuery}`);
     } catch (error) {
       // renderError(String(error))
