@@ -44,8 +44,6 @@ export default function MovieDetails(props) {
     })();
   }, [id]);
 
-  console.log(movie);
-
   function backgroundImage() {
     if (movie.backdrop_path === null || movie.backdrop_path === undefined)
       return {

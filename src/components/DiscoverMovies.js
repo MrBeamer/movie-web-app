@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useParams, useRouteMatch } from "react-router-dom";
 
 const apiKey = process.env.REACT_APP_MOVIE_KEY;
