@@ -5,11 +5,13 @@ import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Slide } from "react-toastify";
+import { useHistory } from "react-router-dom";
 
 const apiKey = process.env.REACT_APP_MOVIE_KEY;
 
 export default function Navbar(props) {
   const { setSearchQuery, searchQuery, setMovies, setLoading } = props;
+  let history = useHistory();
 
   function renderError(msg) {
     toast.error(msg, {
@@ -24,6 +26,7 @@ export default function Navbar(props) {
   }
 
   async function handleSearchSubmit(event) {
+    console.log(history);
     event.preventDefault();
     setLoading(true);
     try {
@@ -33,18 +36,17 @@ export default function Navbar(props) {
 
       if (!response.ok) throw Error(`Movie not found`);
       // (Error ${response.status})
-
       const data = await response.json();
       setMovies(data.results);
+      history.push(`/search/${searchQuery}`);
     } catch (error) {
-      // renderError(String(error));
+      // renderError(String(error))
       console.log(error);
     } finally {
       setLoading(false);
       setSearchQuery("");
     }
   }
-
   return (
     <>
       <nav className="navbar">
@@ -52,6 +54,7 @@ export default function Navbar(props) {
           <img src={logo} alt="logo" />
           <p>Moviesquare</p>
         </Link>
+        {/* <Link to="/watchlist">Watchlist</Link> */}
         <form className="nav-form" onSubmit={handleSearchSubmit}>
           <Input
             required

@@ -7,4 +7,5 @@
 @import "ActorCard";
 @import "MovieCredits";
 @import "SimilarMovie";
+@import "DiscoverMovies";
 @import "mediaQueries";
