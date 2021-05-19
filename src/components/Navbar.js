@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../logo.svg";
 import Input from "./Input.js";
 import { Link } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Slide } from "react-toastify";
 import { useHistory } from "react-router-dom";
