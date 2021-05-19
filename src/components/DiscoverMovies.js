@@ -4,12 +4,14 @@ import { NavLink, useParams, useRouteMatch } from "react-router-dom";
 const apiKey = process.env.REACT_APP_MOVIE_KEY;
 
 export default function DiscoverMovies(props) {
-  const { setMovies, movies, pageNumber } = props;
+  const { setMovies, pageNumber } = props;
   const [genres, setGenres] = useState([]);
   const params = useParams();
   const paramsId = params.id;
   const route = useRouteMatch();
   console.log(pageNumber);
+
+  // movies,
 
   // &page=${pageNumber}
 

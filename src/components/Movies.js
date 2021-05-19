@@ -4,8 +4,8 @@ import Loader from "./Loader";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 export default function Movies(props) {
-  const { movies, loading, setPageNumber, pageNumber } = props;
-
+  const { movies, loading } = props;
+  // , setPageNumber, pageNumber
   // function updatePageNumber() {
   //   setPageNumber((pageNumber) => pageNumber + 1);
   //   console.log(pageNumber);

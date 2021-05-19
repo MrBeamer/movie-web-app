@@ -13,17 +13,17 @@ export default function Navbar(props) {
   const { setSearchQuery, searchQuery, setMovies, setLoading } = props;
   let history = useHistory();
 
-  function renderError(msg) {
-    toast.error(msg, {
-      position: "top-center",
-      autoClose: 3000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  }
+  // function renderError(msg) {
+  //   toast.error(msg, {
+  //     position: "top-center",
+  //     autoClose: 3000,
+  //     hideProgressBar: true,
+  //     closeOnClick: true,
+  //     pauseOnHover: true,
+  //     draggable: true,
+  //     progress: undefined,
+  //   });
+  // }
 
   async function handleSearchSubmit(event) {
     console.log(history);
