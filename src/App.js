@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./css/App.css";
 import "normalize.css";
@@ -7,7 +7,6 @@ import Movies from "./components/Movies.js";
 import MovieDetails from "./components/MovieDetails.js";
 import Watchlist from "./components/Watchlist";
 import DiscoverMovies from "./components/DiscoverMovies";
-import SearchResult from "./components/SearchResult";
 
 export default function App() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -61,13 +60,11 @@ export default function App() {
           <Route exact path="/search/:searchQuery">
             <DiscoverMovies />
             <Movies movies={movies} loading={loading} />
-
-            {/* <SearchResult /> */}
           </Route>
 
           <Route exact path="/genre/:id-:name">
             <DiscoverMovies setMovies={setMovies} />
-            <Movies movies={movies} loading={loading} />
+            <Movies pageNumber={pageNumber} movies={movies} loading={loading} />
           </Route>
 
           <Route exact path="/movie/:id">

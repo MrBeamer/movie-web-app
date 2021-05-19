@@ -9,8 +9,10 @@ export default function DiscoverMovies(props) {
   const params = useParams();
   const paramsId = params.id;
   const route = useRouteMatch();
+  console.log(pageNumber);
 
-  console.log(movies);
+  // &page=${pageNumber}
+
   useEffect(() => {
     (async () => {
       try {
@@ -18,27 +20,28 @@ export default function DiscoverMovies(props) {
 
         if (route.path === "/") {
           response = await fetch(
-            `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&page=${pageNumber}`
+            `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`
           );
         } else if (paramsId === "23") {
           response = await fetch(
-            `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&page=${pageNumber}`
+            `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`
           );
         } else {
           response = await fetch(
-            `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${paramsId}&page=${pageNumber}`
+            `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${paramsId}`
           );
         }
 
         const data = await response.json();
-        console.log(data);
-        if (data.results.length > 0) setMovies([...movies, ...data.results]);
-        // [...movie, ...data.results]
+        console.log(data.results);
+        // console.log(movies);
+        // if (data.results.length > 0) setMovies([...movies, ...data.results]);
+        if (data.results.length > 0) setMovies(data.results);
       } catch (error) {
         console.log(error);
       }
     })();
-  }, [setMovies, paramsId, route.path, pageNumber]);
+  }, [setMovies, paramsId, route.path]);
 
   useEffect(() => {
     (async () => {
