@@ -7,13 +7,13 @@ import Movies from "./components/Movies.js";
 import MovieDetails from "./components/MovieDetails.js";
 import Watchlist from "./components/Watchlist";
 import DiscoverMovies from "./components/DiscoverMovies";
+import TestMovie from "./components/TestMovie";
 
 export default function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [watchlist, setWatchlist] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [pageNumber, setPageNumber] = useState(1);
 
   function handleAddMovieToWatch(addedMovie) {
     if (watchlist.length === 0) {
@@ -44,7 +44,7 @@ export default function App() {
       <div className="container">
         <Switch>
           <Route exact path="/">
-            <DiscoverMovies
+            {/* <DiscoverMovies
               movies={movies}
               setMovies={setMovies}
               pageNumber={pageNumber}
@@ -54,17 +54,21 @@ export default function App() {
               pageNumber={pageNumber}
               movies={movies}
               loading={loading}
-            />
+            /> */}
+            <TestMovie />
           </Route>
 
           <Route exact path="/search/:searchQuery">
             <DiscoverMovies />
             <Movies movies={movies} loading={loading} />
+            {/* <TestMovie /> */}
           </Route>
 
           <Route exact path="/genre/:id-:name">
-            <DiscoverMovies setMovies={setMovies} />
-            <Movies pageNumber={pageNumber} movies={movies} loading={loading} />
+            <TestMovie />
+
+            {/* <DiscoverMovies setMovies={setMovies} />
+            <Movies pageNumber={pageNumber} movies={movies} loading={loading} /> */}
           </Route>
 
           <Route exact path="/movie/:id">
@@ -73,6 +77,12 @@ export default function App() {
           <Route exact path="/watchlist">
             <Watchlist watchlist={watchlist}></Watchlist>
           </Route>
+
+          {/* test */}
+          {/* <Route exact path="/test">
+            <TestMovie />
+          </Route> */}
+          {/* test */}
         </Switch>
       </div>
     </BrowserRouter>

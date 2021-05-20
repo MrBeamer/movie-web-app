@@ -55,6 +55,7 @@ export default function Navbar(props) {
           <p>Moviesquare</p>
         </Link>
         {/* <Link to="/watchlist">Watchlist</Link> */}
+        <Link to="/test">test</Link>
         <form className="nav-form" onSubmit={handleSearchSubmit}>
           <Input
             required
