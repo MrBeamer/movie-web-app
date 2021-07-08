@@ -8,6 +8,7 @@ import MovieDetails from "./components/MovieDetails.js";
 import Watchlist from "./components/Watchlist";
 import DiscoverMovies from "./components/DiscoverMovies";
 import TestMovie from "./components/TestMovie";
+import UpcomingMovies from "./components/UpcomingMovies";
 
 export default function App() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -44,45 +45,26 @@ export default function App() {
       <div className="container">
         <Switch>
           <Route exact path="/">
-            {/* <DiscoverMovies
-              movies={movies}
-              setMovies={setMovies}
-              pageNumber={pageNumber}
-            />
-            <Movies
-              setPageNumber={setPageNumber}
-              pageNumber={pageNumber}
-              movies={movies}
-              loading={loading}
-            /> */}
-            <TestMovie />
+            <UpcomingMovies />
           </Route>
 
           <Route exact path="/search/:searchQuery">
             <DiscoverMovies />
             <Movies movies={movies} loading={loading} />
-            {/* <TestMovie /> */}
           </Route>
 
-          <Route exact path="/genre/:id-:name">
+          {/* <Route exact path="/genre/:id-:name"> */}
+          <Route exact path="/genre/:id-:name/:page">
             <TestMovie />
-
-            {/* <DiscoverMovies setMovies={setMovies} />
-            <Movies pageNumber={pageNumber} movies={movies} loading={loading} /> */}
           </Route>
 
           <Route exact path="/movie/:id">
             <MovieDetails handleAddMovieToWatch={handleAddMovieToWatch} />
           </Route>
+
           <Route exact path="/watchlist">
             <Watchlist watchlist={watchlist}></Watchlist>
           </Route>
-
-          {/* test */}
-          {/* <Route exact path="/test">
-            <TestMovie />
-          </Route> */}
-          {/* test */}
         </Switch>
       </div>
     </BrowserRouter>

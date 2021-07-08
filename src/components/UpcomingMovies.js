@@ -1,37 +1,28 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useRouteMatch } from "react-router-dom";
+import React, { useEffect, useState, useReducer } from "react";
+import { NavLink, useParams, useRouteMatch } from "react-router-dom";
 import Movies from "./Movies";
 import GenreNavbar from "./GenreNavbar";
 
 const apiKey = process.env.REACT_APP_MOVIE_KEY;
 
-export default function TestMovie(props) {
+export default function UpcomingMovies(props) {
   const [loading, setLoading] = useState(false);
+  const [genres, setGenres] = useState([]);
   let [movies, setMovies] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
   const params = useParams();
   const paramsId = params.id;
   const route = useRouteMatch();
+  const [test, setTest] = useState([]);
 
   useEffect(() => {
     (async () => {
-      //check the if it could break the render because of root
       setLoading(true);
       try {
-        // let response = "";
+        let response = "";
 
-        // if (route.path === "/") {
-        //   response = await fetch(
-        //     `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&page=${pageNumber}`
-        //   );
-        // } else {
-        //   response = await fetch(
-        //     `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${paramsId}&page=${pageNumber}`
-        //   );
-        // }
-
-        let response = await fetch(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${paramsId}&page=${pageNumber}`
+        response = await fetch(
+          `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&page=${pageNumber}`
         );
 
         const data = await response.json();
@@ -44,10 +35,6 @@ export default function TestMovie(props) {
           );
           setMovies(filteredList);
           console.log(filteredList);
-        } else if (route.path === "/") {
-          const newMovieList = data.results;
-          setMovies(newMovieList);
-          console.log(newMovieList);
         } else {
           const newMovieList = data.results;
           setMovies(newMovieList);
@@ -67,13 +54,45 @@ export default function TestMovie(props) {
         setLoading(false);
       }
     })();
-  }, [setMovies, paramsId, route.path, pageNumber]);
+  }, [setMovies, pageNumber]);
+
+  useEffect(() => {
+    let isComponentMounted = true;
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`
+        );
+        const data = await response.json();
+
+        setGenres(data.genres);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+    return () => {
+      isComponentMounted = false;
+    };
+  }, [setGenres]);
+
+  function handleClickRefresh() {
+    setPageNumber(1);
+    //   movies = [];
+    //   setMovies(movies);
+  }
 
   return (
     <>
-      <GenreNavbar pageNumber={pageNumber} setPageNumber={setPageNumber} />
+      <GenreNavbar>
+        <li className="genre-list__item">
+          <NavLink exact activeClassName="active" to="/">
+            Upcoming
+          </NavLink>
+        </li>
+      </GenreNavbar>
       <Movies
-        // key={new Date().getTime()}
+        key={new Date().getTime()}
         setPageNumber={setPageNumber}
         movies={movies}
         loading={loading}

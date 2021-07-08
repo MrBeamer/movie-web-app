@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Movie from "./Movie.js";
 import Loader from "./Loader";
 import InfiniteScroll from "react-infinite-scroll-component";
